@@ -8,8 +8,6 @@ export default function CardPodcastCarousel({ url, title, description }) {
             <Image 
                 src={url} 
                 alt={title} 
-                width="100%" 
-                height="100%"
                 unoptimized={true}
                 loading="eager"
                 quality='90'
