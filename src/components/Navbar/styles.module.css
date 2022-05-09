@@ -18,7 +18,7 @@
   list-style: none;
 }
 
-.icons{
+.iconsNavBar{
   display: flex;
   flex-direction: column;
   
@@ -27,7 +27,7 @@
   margin-top: 6vh;
 }
 
-.button{
+.buttonNavBar{
   background-color: #ffffff;
   border-radius: 10px;
   height: 40px;
@@ -44,7 +44,7 @@
   cursor: pointer;
 }
 
-.button:hover {
+.buttonNavBar:hover {
   box-shadow: -.5px .5px 8px #9a8fb5;
   transition: .5s;
 }

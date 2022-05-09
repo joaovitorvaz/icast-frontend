@@ -19,8 +19,8 @@ export default function Navbar () {
         />
       </div>
       <nav className={styles.nav}>
-        <ul className={styles.icons}>
-          <li className={styles.button}>
+        <ul className={styles.iconsNavBar}>
+          <li className={styles.buttonNavBar}>
             <Link href="/">
               <AiFillHome 
                 size={25} 
@@ -29,7 +29,7 @@ export default function Navbar () {
             </Link>        
           </li>
 
-          <li className={styles.button}>
+          <li className={styles.buttonNavBar}>
             <Link href="/">
               <FaUser 
                 size={25} 
@@ -38,7 +38,7 @@ export default function Navbar () {
             </Link>
           </li>
 
-          <li className={styles.button}>
+          <li className={styles.buttonNavBar}>
             <Link href="/">
               <IoMdHeart 
                 size={25} 
@@ -47,7 +47,7 @@ export default function Navbar () {
             </Link>
           </li> 
 
-          <li className={styles.button}>
+          <li className={styles.buttonNavBar}>
             <Link href="/">
               <AiOutlinePlus 
                 size={22} 
@@ -56,7 +56,7 @@ export default function Navbar () {
             </Link>
           </li>
 
-          <li className={styles.button} id={styles.logoutButon}>
+          <li className={styles.buttonNavBar} id={styles.logoutButon}>
             <Link href="/">
               <AiOutlinePoweroff
                 size={20} 
