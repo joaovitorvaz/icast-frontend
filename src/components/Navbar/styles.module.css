@@ -1,0 +1,54 @@
+.containerNavbar {
+  background-color: #f0f2f2;
+  width: 65px;
+  height: 710px;
+  border-radius: 20px;
+
+  position: fixed;
+  display: grid;
+  justify-items: center;
+  align-content: start;
+}
+
+.userIcon{
+  margin-top: 55px;
+}
+
+.nav ul li{
+  list-style: none;
+}
+
+.iconsNavBar{
+  display: flex;
+  flex-direction: column;
+  
+  row-gap: 20px;
+  width: 40px;
+  margin-top: 6vh;
+}
+
+.buttonNavBar{
+  background-color: #ffffff;
+  border-radius: 10px;
+  height: 40px;
+  width: 40px;
+
+  align-self: flex-end;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  box-shadow: -1px 1px 25px #9a8fb5;
+
+  cursor: pointer;
+}
+
+.buttonNavBar:hover {
+  box-shadow: -.5px .5px 8px #9a8fb5;
+  transition: .5s;
+}
+
+#logoutButon{
+  margin-top: 34vh;
+}

@@ -1,24 +1,29 @@
 .container {
-    padding: 90px;
     height: 100%;
     width: 100%;
-    padding: 0 2rem;
 }
   
 .main {
     min-height: 100vh;
     width: 100%;
-    padding: 4rem 0;
+    padding: 1rem 3rem;
+    margin-left: 15px;
     flex: 1;
 }
   
 .title {
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
+    margin-left: 20px;
 }
 
 .carousel  {
     height:100%;
     width: 100%;
     padding: 30px;
+}
+
+.grid{
+    display: flex;
+    padding: 15px;
 }
