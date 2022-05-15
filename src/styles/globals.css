@@ -2,7 +2,7 @@
 
 html,
 body {
-  background-color: #E5E5E5;
+  background-color: #FAFAFA;
   padding: 0;
   margin: 0;
   font-family: Montserrat, sans-serif;
@@ -15,4 +15,14 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;               /* width of the entire scrollbar */
+  background-color: #473080 ;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #322f30;    /* color of the scroll thumb */
+  border-radius: 3px;       /* roundness of the scroll thumb */
 }

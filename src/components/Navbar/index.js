@@ -9,63 +9,64 @@ import { FaUser } from "react-icons/fa"
 
 export default function Navbar () {
   return (
-    <div className={styles.containerNavbar}>
-      <div className={styles.userIcon}>
-        <Image
-          src={userIcon}
-          alt="Ícone do usuário"
-          width={40}
-          height={40}
-        />
+    <div className={styles.wrapper}>
+      <div className={styles.containerNavbar}>
+        <div className={styles.userIcon}>
+          <Image
+            src={userIcon}
+            alt="Ícone do usuário"
+            width={40}
+            height={40}
+          />
+        </div>
+        <nav className={styles.nav}>
+          <ul className={styles.iconsNavBar}>
+            <li className={styles.buttonNavBar}>
+              <Link href="/podcasts">
+                <AiFillHome 
+                  size={25} 
+                  color="#473080"
+                />
+              </Link>        
+            </li>
+
+            <li className={styles.buttonNavBar}>
+              <Link href="/">
+                <FaUser 
+                  size={25} 
+                  color="#473080"
+                />
+              </Link>
+            </li>
+
+            <li className={styles.buttonNavBar}>
+              <Link href="/">
+                <IoMdHeart 
+                  size={25} 
+                  color="#473080"
+                />
+              </Link>
+            </li> 
+
+            <li className={styles.buttonNavBar}>
+              <Link href="/cadastrar-podcast">
+                <AiOutlinePlus 
+                  size={22} 
+                  color="#473080"
+                />
+              </Link>
+            </li>
+          </ul>
+        </nav>
+        <div className={styles.logoutButon}>
+          <Link href="/">
+            <AiOutlinePoweroff
+              size={20} 
+              color="#000"
+            />
+          </Link>
+        </div>
       </div>
-      <nav className={styles.nav}>
-        <ul className={styles.iconsNavBar}>
-          <li className={styles.buttonNavBar}>
-            <Link href="/">
-              <AiFillHome 
-                size={25} 
-                color="#473080"
-              />
-            </Link>        
-          </li>
-
-          <li className={styles.buttonNavBar}>
-            <Link href="/">
-              <FaUser 
-                size={25} 
-                color="#473080"
-              />
-            </Link>
-          </li>
-
-          <li className={styles.buttonNavBar}>
-            <Link href="/">
-              <IoMdHeart 
-                size={25} 
-                color="#473080"
-              />
-            </Link>
-          </li> 
-
-          <li className={styles.buttonNavBar}>
-            <Link href="/">
-              <AiOutlinePlus 
-                size={22} 
-                color="#473080"
-              />
-            </Link>
-          </li>
-
-          <li className={styles.buttonNavBar} id={styles.logoutButon}>
-            <Link href="/">
-              <AiOutlinePoweroff
-                size={20} 
-                color="#000"
-              />
-            </Link>
-          </li>
-        </ul>
-      </nav>
     </div>
   )
 }

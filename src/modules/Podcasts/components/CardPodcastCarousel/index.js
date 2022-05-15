@@ -1,7 +1,9 @@
 import styles from './styles.module.css'
 import Image from 'next/image'
+import { BsFillPlayFill } from "react-icons/bs"
 
-export default function CardPodcastCarousel({ url, title, description }) {
+
+export default function CardPodcastCarousel({ url, title, author, description }) {
   return (
     <div className={styles.container}>
        <div className={styles.podcast__cover} >
@@ -16,11 +18,15 @@ export default function CardPodcastCarousel({ url, title, description }) {
        </div>
         <div className={styles.podcast__content}>
             <div>
-                10 episódios
+                <p>10 episódios</p>
             </div>
             <div>
                 <h3 className={styles.podcast__title}>{title}</h3>
-                <p className={styles.podcast__description}>{description}</p>
+                <p className={styles.podcast__author}>por {author}</p>
+                <div className={styles.playerGrid}>
+                    <p className={styles.podcast__description}>{description}</p>
+                    <div className={styles.playerIcon}><BsFillPlayFill/></div>
+                </div>
             </div>
         </div>
     </div>

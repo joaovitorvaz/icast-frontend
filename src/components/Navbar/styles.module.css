@@ -1,17 +1,21 @@
+.wrapper {
+  height: 100%;
+  display: flex;
+}
+
 .containerNavbar {
-  background-color: #f0f2f2;
+  background-color: #ffffff;
   width: 65px;
-  height: 710px;
+  height: calc(100vh - 30px);
   border-radius: 20px;
 
   position: fixed;
   display: grid;
   justify-items: center;
-  align-content: start;
 }
 
 .userIcon{
-  margin-top: 55px;
+  margin-top: 50px;
 }
 
 .nav ul li{
@@ -22,12 +26,13 @@
   display: flex;
   flex-direction: column;
   
+  margin-top: -15vh;
   row-gap: 20px;
   width: 40px;
-  margin-top: 6vh;
 }
 
-.buttonNavBar{
+.buttonNavBar,
+.logoutButon {
   background-color: #ffffff;
   border-radius: 10px;
   height: 40px;
@@ -44,11 +49,16 @@
   cursor: pointer;
 }
 
-.buttonNavBar:hover {
+.buttonNavBar:hover, 
+.logoutButon:hover {
   box-shadow: -.5px .5px 8px #9a8fb5;
   transition: .5s;
 }
 
-#logoutButon{
-  margin-top: 34vh;
+.buttonNavBar {
+  justify-items: start;
+}
+
+.logoutButon {
+  margin-bottom: 15px;
 }
