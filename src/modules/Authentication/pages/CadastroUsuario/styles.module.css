@@ -1,0 +1,104 @@
+.main {
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+  
+.grid{
+    display: flex;
+    padding: 0px;  
+}
+
+.blocoCadastro{
+    border-radius: 8px;
+    width: 35%;
+    height: 96vh;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-items: center;
+    align-self: center;
+    flex-direction: column;
+}
+
+.titleCadUser{
+    color: #0B050E;
+    font-weight: 800;
+    text-align: center;
+    font-size: 24px;
+    font-family: 'Play', sans-serif;
+}
+
+.subtitleCadUser{
+    padding: 0px 60px 25px 60px;
+    display: flex;
+    justify-content: center;
+    color: #48434A;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+}
+
+.criarUsuario{
+    width: 100%;
+}
+
+.organizarBlocoCad{
+
+}
+
+
+.input{
+    width: 100%;
+    height: 5vh;
+    background-color: white;
+    border: 1px solid #98AFCA;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    color: #0B050E;
+}
+
+.textarea{
+    height: 15vh;
+    background-color: white;
+    border: 1px solid #98AFCA;
+    border-radius: 4px;
+    resize: none;
+    margin-bottom: 10px;
+}
+
+.textarea:focus, .input:focus {
+    box-shadow: 0 0 0 0;
+    border: 1px solid #98AFCA;
+    outline: 0;
+} 
+
+.buttonEnviar{
+    background-color: #473080;
+    border: 0 none;
+    height: 5.5vh;
+    width: 330px;
+    color: white;
+    border-radius: 4px;
+    font-size: 14px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+    align-items: center;
+}
+
+.label{
+    line-height: 20px;
+    color: #6F7782;
+    font-size: 14px;
+}
+
+.login{
+    justify-content: center;
+    display: flex;
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    color: #6F7782;
+}
