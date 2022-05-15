@@ -7,7 +7,7 @@ import Image from 'next/image'
 import React, { FormEvent, ChangeEvent, useState } from "react"
 import {useRef, useEffect} from "react"
 
-export default function Home() {
+export default function CadastroUsuario() {
   const [image, setImage] = useState();
   const [preview, setPreview] = useState();
   const fileInputRef = useRef();
@@ -37,14 +37,39 @@ export default function Home() {
               <p className={styles.titleCadUser}>iCast</p>
               <p className={styles.subtitleCadUser}>Crie uma conta gratuitamente preenchendo o formulario</p>
             </div>
-            <div className={styles.organizaFormulario}>
-                <label className={styles.label}>Endereço de e-mail</label>
-                <input className={styles.input}></input>
-                <label className={styles.label}>Descrição do podcast</label>
-                <textarea className={styles.textarea}></textarea>
-                <label className={styles.label}>Capa do podcast</label>
+            <div className={styles.blocoFormulario} style={{padding:'0px 60px 0px 60px'}}>
+              <div style={{display:'flex', flexDirection:'column', width:'100%'}}>
+                  <label className={styles.label}>Nome do episódio</label>
+                  <input className={styles.input}></input>
+              </div>
+              <div style={{display:'flex', flexDirection:'row', width:'100%'}}>
+                <div style={{display:'flex', flexDirection:'column', width:'47%'}}>
+                  <label className={styles.label}>Nome</label>
+                  <input className={styles.input}></input>
+                </div>
+                <div style={{display:'flex', flexDirection:'column', marginLeft:'20px', width:'47%'}}>
+                  <label className={styles.label}>Sobrenome</label>
+                  <input className={styles.input}></input>
+                </div>
+              </div>
+                <div style={{display:'flex', flexDirection:'column', width:'100%'}}>
+                    <label className={styles.label}>Senha</label>
+                    <input className={styles.input}></input>
+                </div>
+                <div style={{display:'flex', flexDirection:'row', width:'100%'}}>
+                  <div style={{display:'flex', flexDirection:'column', width:'47%'}}>
+                    <label className={styles.label}>Estado</label>
+                    <input className={styles.input}></input>
+                  </div>
+                  <div style={{display:'flex', flexDirection:'column', marginLeft:'20px', width:'47%'}}>
+                    <label className={styles.label}>Cidade</label>
+                    <input className={styles.input}></input>
+                  </div>
+              </div>
+              <div style={{display:'flex', flexDirection:'column'}}>
+              <label className={styles.label}>Avatar</label>
                 {preview ? (
-                  <img style={{height:'120px', objectFit: 'cover',
+                  <img style={{height:'60px', width:'80px', objectFit: 'cover',
                    cursor: 'pointer', borderRadius:'4px'}}
                     src={preview} 
                     onClick={() => {
@@ -52,14 +77,15 @@ export default function Home() {
                     }}></img>
                 ) : (
                   <button 
-                    style={{height:'120px', objectFit: 'cover', 
+                    style={{height:'60px', width:'80px', objectFit: 'cover', 
                     background:'white', border: '1px solid #98AFCA', 
+                    color: '#6F7782', fontWeight: '500', fontSize:'34px',
                     borderRadius: '4px', cursor: 'pointer'}}
                     onClick={(event) => {
                     event.preventDefault();
                     fileInputRef.current.click();
                   }}>
-                    <p style={{color: '#6F7782', fontWeight: '200', fontSize:'40px'}}>+</p></button>
+                    +</button>
                 )}
                 <input 
                   type="file" 
@@ -76,12 +102,16 @@ export default function Home() {
                   }}
                   >
                   </input>
-                  <button className={styles.buttonEnviar}>Enviar</button>
-              </div>
+                  <button className={styles.buttonEnviar}>Salvar cadastro</button>
+                  <div style={{display:'flex', flexDirection: 'row', widt: '100%', justifyContent: 'center'}}>
+                    <p className={styles.login}>Já possui uma conta? </p>
+                    <p className={styles.login} style={{color: '#0094FF'}}> &nbsp;&nbsp;Faça login </p>
+                    </div>
+                </div>
+            </div>
           </div>
         </main>
       </div>
-     
     </div>
   )
 }
