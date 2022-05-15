@@ -6,13 +6,10 @@
 .main {
     font-family: 'Montserrat', sans-serif;
     min-height: 100vh;
-    width: 70%;
-    padding: 1rem 3rem;
-    margin-left: 50px;
-    flex: 1;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    margin-left: 200px;
+    justify-content: center;
 }
   
 .grid{
@@ -20,120 +17,37 @@
     padding: 0px;    
 }
 
-.informacoesUser{
-    margin-top: 8px;
+.blocoCadastro{
+    border-radius: 8px;
+    width: 35%;
+    height: 85vh;
+    background-color: #FFFFFF;
     display: flex;
-    flex-direction: row;
+    justify-items: center;
+    align-self: center;
+    justify-content: center;
 }
 
-.organizarInformacoes{
+.titleCadUser{
     color: #0B050E;
-    font-size: 16px;
-    font-weight: 500;
+    font-weight: 800;
+    text-align: center;
+    font-size: 24px;
+    font-family: 'Play', sans-serif;
+}
+
+.subtitleCadUser{
+    color: #48434A;
+    text-align: center;
     font-family: 'Montserrat', sans-serif;
-    margin-top: 0px;
-    line-height: 3px;
-    margin-left: 20px;
-}
-
-.organizarEndereco{
-    font-size: 12px;
-    font-weight: 300;
-    font-family: 'Montserrat', sans-serif;
-    display: flex;
-    margin-left: -8px;
-}
-
-.imgEndereco{
-    object-fit: fill;
-}
-
-.buttonStatus{
-    height: 4vh;
-    width: 100px;
-    background-color: #6EB1FF;
-    border: 0 none;
-    border-radius: 3px;
-    color: white;
-    font-size: 13px;
-    margin-left: 448px;
+    font-size: 14px;
 }
 
 .criarUsuario{
-    margin-top: 20px;
-    width: 80%;
-    line-height: 3px;
+    width: 70%;
+
 }
 
-.titleCriarUsuario{
-    position: absolute;
-    width: 587px;
-    height: 705px;
-    left: 462px;
-    top: 153px;
-
-    background: #FFFFFF;
-    box-shadow: 0px 0px 30px rgba(124, 123, 123, 0.01);
-    border-radius: 10px;
-}
-
-.subtitleCriarUsuario{
-    text-align: center;
-    font-weight: 100;
-    color: #6F7782;
-}
-
-.organizaFormulario{
-    margin-top: 40px;
-    line-height: 20px;
-    color: #6F7782;
-    font-size: 16px;
-    display: flex;
-    flex-direction: column;
-}
-
-.input{
-    width: 44%;
-    height: 5vh;
-    background-color: white;
-    border: 1px solid #98AFCA;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    color: #0B050E;
-}
-.labelLado{
-
-    margin-right: 190px;
-}
-.inputLado{
-    width: 20%;
-    height: 5vh;
-    margin-right: 40px;
-    background-color: white;
-    border: 1px solid #98AFCA;
-    border-radius: 4px;
-    margin-bottom: 10px;
-    color: #0B050E;
-}
-
-
-
-.textarea:focus, .input:focus {
-    box-shadow: 0 0 0 0;
-    border: 1px solid #98AFCA;
-    outline: 0;
-} 
-
-.buttonCadastro{
-    background-color: #473080;
-    border: 0 none;
-    height: 5.5vh;
-    width: 300px;
-    color: white;
-    border-radius: 4px;
-    font-size: 14px;
-    margin-top: 30px;
-    margin-left: 35.0%;
-    margin-bottom: 2%;
+.organizarBlocoCad{
 
 }

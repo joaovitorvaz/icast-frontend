@@ -31,38 +31,18 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.grid}>
-        <Navbar/>
         <main className={styles.main}>
-
-          <div className={styles.criarUsuario}>
-              <p className={styles.titleCriarUsuario}>iCast</p>
-              <p className={styles.subtitleCriarUsuario}>Crie uma conta gratuitamente preenchendo o formulário</p>
-              <div className={styles.organizaFormulario}>
-                <label className={styles.label}>Enderecço do e-mail</label>
+          <div className={styles.blocoCadastro}>
+            <div className={styles.criarUsuario}>
+              <p className={styles.titleCadUser}>iCast</p>
+              <p className={styles.subtitleCadUser}>Crie uma conta gratuitamente preenchendo o formulario</p>
+            </div>
+            <div className={styles.organizaFormulario}>
+                <label className={styles.label}>Endereço de e-mail</label>
                 <input className={styles.input}></input>
-
-                <div>
-                    <label className={styles.labelLado}>Nome</label>
-                    <label className={styles.labelLado}>Sobrenome</label>
-                    <div>
-                        <input className={styles.inputLado}></input>
-                        <input className={styles.inputLado}></input>
-                    </div>
-                </div>
-
-                <label className={styles.label}>senha</label>
-                <input className={styles.input}></input>
-                
-                <div>
-                    <label className={styles.labelLado}>Estado</label>
-                    <label className={styles.labelLado}>Cidade</label>
-                    <div>
-                        <input className={styles.inputLado}></input>
-                        <input className={styles.inputLado}></input>
-                    </div>
-                </div>
-                
-                <label className={styles.label}>Avatar</label>
+                <label className={styles.label}>Descrição do podcast</label>
+                <textarea className={styles.textarea}></textarea>
+                <label className={styles.label}>Capa do podcast</label>
                 {preview ? (
                   <img style={{height:'120px', objectFit: 'cover',
                    cursor: 'pointer', borderRadius:'4px'}}
@@ -74,8 +54,7 @@ export default function Home() {
                   <button 
                     style={{height:'120px', objectFit: 'cover', 
                     background:'white', border: '1px solid #98AFCA', 
-                    borderRadius: '4px', cursor: 'pointer', width: '15%',
-                }}
+                    borderRadius: '4px', cursor: 'pointer'}}
                     onClick={(event) => {
                     event.preventDefault();
                     fileInputRef.current.click();
@@ -97,10 +76,9 @@ export default function Home() {
                   }}
                   >
                   </input>
-                  <button className={styles.buttonCadastro}>Salvar cadastro</button>
+                  <button className={styles.buttonEnviar}>Enviar</button>
               </div>
-              <p className={styles.subtitleCriarUsuario}>Já possui uma conta? Faça Login</p>
-            </div>
+          </div>
         </main>
       </div>
      
