@@ -4,7 +4,11 @@ import { AuthProvider } from '../contexts/Authentication';
 function MyApp({ Component, pageProps }) {
   return (
     <AuthProvider>
-      <Component {...pageProps} />
+      <div className="wrapper">
+        <div className="content">
+          <Component {...pageProps} />
+        </div>
+      </div>
     </AuthProvider>
   )
 }
