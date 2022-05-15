@@ -59,20 +59,20 @@
     margin-left: 448px;
 }
 
-.criarPodcast{
+.criarEp{
     margin-top: 20px;
     width: 80%;
     line-height: 3px;
 }
 
-.titleCriarPodcast{
+.titleCriarEp{
     font-family: 'Montserrat', sans-serif;
     text-align: center;
     font-weight: bold;
     font-size:  22px;
 }
 
-.subtitleCriarPodcast{
+.subtitleCriarEp{
     text-align: center;
     font-weight: 100;
     color: #6F7782;

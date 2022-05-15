@@ -7,7 +7,7 @@ import Image from 'next/image'
 import React, { FormEvent, ChangeEvent, useState } from "react"
 import {useRef, useEffect} from "react"
 
-export default function Home() {
+export default function CadastroPodcast() {
   const [image, setImage] = useState();
   const [preview, setPreview] = useState();
   const fileInputRef = useRef();
@@ -33,7 +33,7 @@ export default function Home() {
       <div className={styles.grid}>
         <Navbar/>
         <main className={styles.main}>
-          <div className={styles.informacoesUser}>
+          <div className={styles.informacoes}>
             <Image 
               src={iconUser}
               width={70}
