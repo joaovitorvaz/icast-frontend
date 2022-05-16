@@ -13,25 +13,28 @@
 
 .blocoCadastro{
     border-radius: 8px;
-    width: 35%;
-    height: 96vh;
+    width: 587px;
+    height: auto;
     background-color: #FFFFFF;
     display: flex;
     justify-items: center;
     align-self: center;
     flex-direction: column;
+    padding: 50px 0;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
 }
 
 .titleCadUser{
     color: #0B050E;
     font-weight: 800;
     text-align: center;
-    font-size: 24px;
+    font-size: 36px;
     font-family: 'Play', sans-serif;
+    margin-bottom: -10px;
 }
 
 .subtitleCadUser{
-    padding: 0px 60px 25px 60px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: center;
     color: #48434A;
@@ -40,14 +43,15 @@
     font-size: 14px;
 }
 
+.blocoFormulario input {
+    padding: 0 16px;
+    font-size: 16px;
+    color: #596069;
+}
+
 .criarUsuario{
     width: 100%;
 }
-
-.organizarBlocoCad{
-
-}
-
 
 .input{
     width: 100%;
@@ -78,7 +82,7 @@
     background-color: #473080;
     border: 0 none;
     height: 5.5vh;
-    width: 330px;
+    width: 100%;
     color: white;
     border-radius: 4px;
     font-size: 14px;
@@ -95,10 +99,11 @@
     font-size: 14px;
 }
 
-.login{
+.login {
+    cursor: pointer;
     justify-content: center;
     display: flex;
+    color: #6F7782;
     font-size: 14px;
     font-family: 'Lato', sans-serif;
-    color: #6F7782;
 }

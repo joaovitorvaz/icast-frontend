@@ -1,16 +1,64 @@
 import Head from 'next/head'
 import styles from './styles.module.css'
-import iconUser from "../../../../assets/icon.jpeg"
-import iconLocalizacao from "../../../../assets/iconLocalizacao.png"
-import Navbar from '../../../../components/Navbar'
 import Image from 'next/image'
-import React, { FormEvent, ChangeEvent, useState } from "react"
-import {useRef, useEffect} from "react"
+import React, { useState } from "react"
+import {useRef, useEffect, useContext} from "react"
+import { api } from "../../../../service/api";
+import { toast } from 'react-toastify';
+import { useRouter } from 'next/router'
+
+import { AuthContext } from "../../../../contexts/Authentication"
 
 export default function CadastroUsuario() {
+  const router = useRouter();
   const [image, setImage] = useState();
   const [preview, setPreview] = useState();
   const fileInputRef = useRef();
+
+  const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [password, setPassword] = useState("");
+  const [state, setState] = useState("");
+  const [city, setCity] = useState("");
+
+  const { signIn } = useContext(AuthContext);
+
+  const [loading, setLoading] = useState(false);
+
+  function handleSignup(event) {
+    event.preventDefault();
+    setLoading(true);
+
+    api.post("user/create", {
+      firstName,
+      lastName,
+      email,
+      password,
+      city,
+      state
+    }).then((response) => {
+      const userId = response.data.user.id;
+      const data = new FormData();
+      data.append('userId', userId);
+      data.append('avatar', image);
+      api.post("user/avatar", data).then((response) => {
+        response.data && setLoading(false);
+        toast("Cadastro realizado com sucesso!");
+        signIn({email, password})
+        .then(() => {
+          router.push("podcasts")
+        })
+      })
+    }).catch((error) => {
+      setLoading(false);
+      if(error.response.data.message === "User already exists")
+      toast.error("Já existe um usuário registrado com esse email.");
+      else toast.error("Ops! Algo deu errado, tente novamente.");
+    })
+      
+  }
+
   useEffect(() => {
     if(image){
       const reader = new FileReader();
@@ -39,42 +87,48 @@ export default function CadastroUsuario() {
             </div>
             <div className={styles.blocoFormulario} style={{padding:'0px 60px 0px 60px'}}>
               <div style={{display:'flex', flexDirection:'column', width:'100%'}}>
-                  <label className={styles.label}>Nome do episódio</label>
-                  <input className={styles.input}></input>
+                  <label className={styles.label}>Endereço de e-mail</label>
+                  <input className={styles.input} onChange={(e) => {setEmail(e.target.value)}}/>
               </div>
               <div style={{display:'flex', flexDirection:'row', width:'100%'}}>
                 <div style={{display:'flex', flexDirection:'column', width:'47%'}}>
                   <label className={styles.label}>Nome</label>
-                  <input className={styles.input}></input>
+                  <input className={styles.input} onChange={(e) => {setFirstName(e.target.value)}}/>
                 </div>
                 <div style={{display:'flex', flexDirection:'column', marginLeft:'20px', width:'47%'}}>
                   <label className={styles.label}>Sobrenome</label>
-                  <input className={styles.input}></input>
+                  <input className={styles.input} onChange={(e) => {setLastName(e.target.value)}}/>
                 </div>
               </div>
                 <div style={{display:'flex', flexDirection:'column', width:'100%'}}>
                     <label className={styles.label}>Senha</label>
-                    <input className={styles.input}></input>
+                    <input type="password" className={styles.input} onChange={(e) => {setPassword(e.target.value)}}/>
                 </div>
                 <div style={{display:'flex', flexDirection:'row', width:'100%'}}>
                   <div style={{display:'flex', flexDirection:'column', width:'47%'}}>
                     <label className={styles.label}>Estado</label>
-                    <input className={styles.input}></input>
+                    <input className={styles.input} onChange={(e) => {setState(e.target.value)}}/>
                   </div>
                   <div style={{display:'flex', flexDirection:'column', marginLeft:'20px', width:'47%'}}>
                     <label className={styles.label}>Cidade</label>
-                    <input className={styles.input}></input>
+                    <input className={styles.input} onChange={(e) => {setCity(e.target.value)}}/>
                   </div>
               </div>
               <div style={{display:'flex', flexDirection:'column'}}>
               <label className={styles.label}>Avatar</label>
                 {preview ? (
-                  <img style={{height:'60px', width:'80px', objectFit: 'cover',
-                   cursor: 'pointer', borderRadius:'4px'}}
+                  <Image style={{cursor: 'pointer', borderRadius:'4px'}}
+                    height='80px'
+                    width='80px'
+                    unoptimized={true}
+                    loading="eager"
+                    quality='90'
+                    layout="fixed"
                     src={preview} 
+                    alt="prev-image"
                     onClick={() => {
                       setImage(null);
-                    }}></img>
+                    }}/>
                 ) : (
                   <button 
                     style={{height:'60px', width:'80px', objectFit: 'cover', 
@@ -100,12 +154,23 @@ export default function CadastroUsuario() {
                       setImage(null);
                     }
                   }}
+                  />
+                  <button 
+                    className={styles.buttonEnviar} 
+                    onClick={handleSignup}
+                    disabled={loading}
                   >
-                  </input>
-                  <button className={styles.buttonEnviar}>Salvar cadastro</button>
+                    {!loading ? "Salvar cadastro" : "Carregando..."}
+                  </button>
                   <div style={{display:'flex', flexDirection: 'row', widt: '100%', justifyContent: 'center'}}>
                     <p className={styles.login}>Já possui uma conta? </p>
-                    <p className={styles.login} style={{color: '#0094FF'}}> &nbsp;&nbsp;Faça login </p>
+                    <p 
+                      className={styles.login} 
+                      style={{color: '#0094FF'}}
+                      onClick={() => { router.push("login")}}
+                    > 
+                      &nbsp;&nbsp;Faça login
+                    </p>
                     </div>
                 </div>
             </div>
