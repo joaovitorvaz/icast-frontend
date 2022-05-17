@@ -4,14 +4,46 @@ import iconUser from "../../../../assets/icon.jpeg"
 import iconLocalizacao from "../../../../assets/iconLocalizacao.png"
 import Navbar from '../../../../components/Navbar'
 import Image from 'next/image'
+import { toast } from 'react-toastify';
 import React, { FormEvent, ChangeEvent, useState } from "react"
 import {useRef, useEffect} from "react"
+import { request } from 'http'
+import { api } from '../../../../service/api'
 
 export default function CadastroEp() {
 
   const [image, setImage] = useState();
   const [preview, setPreview] = useState();
-  const fileInputRef = useRef();
+  const fileInputRef = useRef()
+
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  function handleSignup(event) {
+    event.preventDefault();
+    setLoading(true);
+    const data = new FormData();
+    data.append('title', title);
+    data.append('description', description);
+    data.append('cover', image);
+    api.post(`episode/create/${"d1f5a038-166e-4e01-9334-cae2d21ffda9"}`, data).then((response) => {
+        response.data && setLoading(false);
+        toast("Cadastro realizado com sucesso!");
+      
+    }).catch((error) => {
+      setLoading(false);
+      toast.error("Ops! Algo deu errado, tente novamente.");
+    })
+      
+  }
+
+  function readURL(input){
+    sourceAux = URL.createObjectURL(input.target.fles[0]);
+    console.log(sourceAux);
+    let audio = new Audio(sourceAux);
+}
+
   useEffect(() => {
     if(image){
       const reader = new FileReader();
@@ -23,6 +55,12 @@ export default function CadastroEp() {
       setPreview(null);
     }
   }, [image]);
+
+
+  useEffect(() => {
+    api.get("podcast/me").then((response)=> {console.log(response.data)}).catch(() => {});
+  }, []);
+
 
   return (
     <div className={styles.container}>
@@ -62,15 +100,15 @@ export default function CadastroEp() {
               <div style={{display:'flex', flexDirection:'row', width:'100%'}}>
                 <div style={{display:'flex', flexDirection:'column', width:'35%'}}>
                   <label className={styles.label}>Podcast</label>
-                  <input className={styles.input}></input>
+                  <input className={styles.input} ></input>
                 </div>
                 <div style={{display:'flex', flexDirection:'column', marginLeft:'20px', width:'65%'}}>
-                  <label className={styles.label}>Nome do episódio</label>
-                  <input className={styles.input}></input>
+                  <label className={styles.label} >Nome do episódio</label>
+                  <input className={styles.input} onChange={(e) => {setTitle(e.target.value)}}></input>
                 </div>
               </div>
-              <label className={styles.label}>Descrição do episódio</label>
-              <textarea className={styles.textarea}></textarea>
+              <label className={styles.label} >Descrição do episódio</label>
+              <textarea className={styles.textarea} onChange={(e) => {setDescription(e.target.value)}}></textarea>
               <label className={styles.label}>Capa do podcast</label>
               {preview ? (
                 <img style={{height:'120px', objectFit: 'cover',
@@ -105,7 +143,12 @@ export default function CadastroEp() {
                 }}
                 >
                 </input>
-                <button className={styles.buttonEnviar}>Enviar</button>
+                <br></br>
+                <input id="auInput" type="file" accept="audio/*" onChange={e => readURL(e)}/>
+
+                <button className={styles.buttonEnviar} onClick={handleSignup} disabled={loading}>
+                    {!loading ? "Enviar" : "Carregando..."}
+                  </button>
               </div>
             </div>
         </main>
