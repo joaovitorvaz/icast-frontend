@@ -27,8 +27,7 @@ export function AuthProvider({ children }) {
     if (token && user) {
       setCookie(undefined, 'icast.token', token);
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      setUser(user);
-      getRefreshToken();
+      setUser(user);;
     }
   }
 
