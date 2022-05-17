@@ -1,6 +1,6 @@
 .container {
     padding: 20px;
-    margin-top: 50px;
+    margin-top: 0px;
     max-height: calc(100% - 50px);
     width: 22rem;
 
@@ -233,11 +233,15 @@
     font-weight: 500;
 }
 
+.episode img {
+    object-fit: cover;
+}
+
 .episodeList {
     overflow-y: auto;
     margin-top: 10px;
     width: 100%;
-    height: 180px;
+    height: 100px;
 }
 
 .podcastInformations p:last-child {

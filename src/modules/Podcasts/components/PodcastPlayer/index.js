@@ -91,7 +91,7 @@ export default function PodcastPlayer() {
             <div className={styles.emptyPlayer}>
               <strong>Selecione um podcast para ouvir</strong>
             </div>
-            : episode?.length > 0 ?
+            : episode ?
               (
                 <div className={styles.coverPodcast}>
                 <img 

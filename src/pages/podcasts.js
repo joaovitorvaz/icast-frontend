@@ -1,14 +1,14 @@
 import { parseCookies } from 'nookies'
-import PodcastList from '../modules/Podcasts/pages/Podcasts'
+
+import HomePodcast from '../modules/Podcasts/pages/Home'
 
 export default function Podcasts() {
 
   return (
-    <PodcastList/>
+    <HomePodcast />
   )
 }
 
-/*
 export const getServerSideProps= async (ctx) => {
   const { ['icast.token']: token } = parseCookies(ctx);
 
@@ -24,4 +24,4 @@ export const getServerSideProps= async (ctx) => {
   return {
     props: {},
   };
-};*/
+};

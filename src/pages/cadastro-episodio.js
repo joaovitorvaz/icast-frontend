@@ -1,4 +1,5 @@
 import CadastroEp from '../modules/Podcasts/pages/CadastroEpisodio'
+import { parseCookies } from 'nookies'
 
 export default function cadastrarEp() {
   return (
