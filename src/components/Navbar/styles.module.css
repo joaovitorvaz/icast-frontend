@@ -1,54 +1,60 @@
+.wrapper {
+    height: 100%;
+    display: flex;
+}
+
 .containerNavbar {
-  background-color: #f0f2f2;
-  width: 65px;
-  height: 710px;
-  border-radius: 20px;
-
-  position: fixed;
-  display: grid;
-  justify-items: center;
-  align-content: start;
+    background-color: #ffffff;
+    width: 65px;
+    height: calc(100vh - 30px);
+    border-radius: 20px;
+    position: fixed;
+    display: grid;
+    justify-items: center;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 }
 
-.userIcon{
-  margin-top: 55px;
+.userIcon {
+    margin-top: 50px;
 }
 
-.nav ul li{
-  list-style: none;
+.nav ul li {
+    list-style: none;
 }
 
-.iconsNavBar{
-  display: flex;
-  flex-direction: column;
-  
-  row-gap: 20px;
-  width: 40px;
-  margin-top: 6vh;
+.iconsNavBar {
+    display: flex;
+    flex-direction: column;
+    margin-top: -15vh;
+    row-gap: 20px;
+    width: 40px;
 }
 
-.buttonNavBar{
-  background-color: #ffffff;
-  border-radius: 10px;
-  height: 40px;
-  width: 40px;
-
-  align-self: flex-end;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  box-shadow: -1px 1px 25px #9a8fb5;
-
-  cursor: pointer;
+.buttonNavBar,
+.logoutButon {
+    background-color: #ffffff;
+    border-radius: 10px;
+    height: 40px;
+    width: 40px;
+    align-self: flex-end;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(83, 39, 155, 0.2) 0px 2px 8px 0px;
+    cursor: pointer;
 }
 
-.buttonNavBar:hover {
-  box-shadow: -.5px .5px 8px #9a8fb5;
-  transition: .5s;
+.buttonNavBar:hover,
+.logoutButon:hover {
+    box-shadow: rgba(67, 28, 129, 0.2)px 2px 8px 0px;
+    transition: .5s;
 }
 
-#logoutButon{
-  margin-top: 34vh;
+.buttonNavBar {
+    justify-items: start;
+}
+
+.logoutButon {
+    margin-bottom: 15px;
+    border: 0;
 }
