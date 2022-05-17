@@ -83,7 +83,7 @@ export default function CadastroUsuario() {
           <div className={styles.blocoCadastro}>
             <div className={styles.criarUsuario}>
               <p className={styles.titleCadUser}>iCast</p>
-              <p className={styles.subtitleCadUser}>Crie uma conta gratuitamente preenchendo o formulario</p>
+              <p className={styles.subtitleCadUser}>Crie uma conta gratuitamente preenchendo o formulário</p>
             </div>
             <div className={styles.blocoFormulario} style={{padding:'0px 60px 0px 60px'}}>
               <div style={{display:'flex', flexDirection:'column', width:'100%'}}>
