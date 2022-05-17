@@ -1,29 +1,34 @@
 .container {
     height: 100vh;
     width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
   
 .main {
     font-family: 'Montserrat', sans-serif;
     min-height: 100vh;
-    width: 70%;
-    padding: 1rem 3rem;
-    margin-left: 15px;
+    width: 100%;
     flex: 1;
     display: flex;
+    padding: 40px 0;
+    align-items: center;
     flex-direction: column;
-    margin-left: 200px;
 }
   
 .grid{
     display: flex;
-    padding: 0px;    
+    width: 100%;     
 }
 
 .informacoes{
+    width: 100%;
     margin-top: 8px;
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 10%;
 }
 
 .organizarInformacoes{
@@ -88,8 +93,10 @@
 }
 
 .input{
+    font-family: 'Montserrat', sans-serif;
     width: 100%;
     height: 5vh;
+    padding: 10px;
     background-color: white;
     border: 1px solid #98AFCA;
     border-radius: 4px;
@@ -98,12 +105,27 @@
 }
 
 .textarea{
+    font-family: 'Montserrat', sans-serif;
     height: 15vh;
+    padding: 10px;
     background-color: white;
     border: 1px solid #98AFCA;
     border-radius: 4px;
     resize: none;
     margin-bottom: 10px;
+}
+
+.select {
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    height: 5vh;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #98AFCA;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    color: #0B050E;
+    outline: none;
 }
 
 .textarea:focus, .input:focus {
@@ -112,14 +134,22 @@
     outline: 0;
 } 
 
+.buttonGrid {
+    display: flex;
+    flex-direction: column;
+    width: 29%;
+    margin-left: 1%;
+}
+
 .buttonEnviar{
     background-color: #473080;
     border: 0 none;
     height: 5.5vh;
-    width: 200px;
+    width: 300px;
     color: white;
     border-radius: 4px;
-    font-size: 14px;
-    margin-top: 30px;
-    margin-left: 73.5%;
+    font-size: 16px;
+    text-transform: uppercase;
+    margin-top: 20px;
+    align-self: flex-end;
 }

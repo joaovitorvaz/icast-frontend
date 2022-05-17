@@ -16,7 +16,7 @@ export default function Login() {
     setLoadingLogin(true);
     try {
       await signIn({ email, password });
-      router.push('/podcasts');
+      router.push('/');
     } catch {
       toast.error("Senha e/ou email não estão corretos.");
       setLoadingLogin(false);

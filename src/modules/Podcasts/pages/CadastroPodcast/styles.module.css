@@ -31,10 +31,6 @@
     padding: 0 10%;
 }
 
-.informacoes__perfil {
-    display: flex;
-}
-
 .organizarInformacoes{
     color: #0B050E;
     font-size: 16px;
@@ -98,6 +94,7 @@
 }
 
 .input{
+    font-family: 'Montserrat', sans-serif;
     width: 100%;
     height: 5vh;
     background-color: white;
@@ -105,15 +102,21 @@
     border-radius: 4px;
     margin-bottom: 10px;
     color: #0B050E;
+    padding: 10px;
+
 }
 
 .textarea{
+    font-family: 'Montserrat', sans-serif;
     height: 15vh;
     background-color: white;
     border: 1px solid #98AFCA;
     border-radius: 4px;
     resize: none;
     margin-bottom: 10px;
+    padding: 10px;
+    color: #0B050E;
+
 }
 
 .textarea:focus, .input:focus {

@@ -55,7 +55,7 @@ export default function UserProfile() {
                   </div>
               </div>
             </div>
-            <button className={styles.buttonStatus}>Usuário</button>
+            <button className={styles.buttonStatus}>Podcaster</button>
           </div> 
     </div>
   )

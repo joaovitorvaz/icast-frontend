@@ -6,6 +6,8 @@ import Link from 'next/link'
 import { AiFillHome, AiOutlinePoweroff, AiOutlinePlus } from "react-icons/ai"
 import { IoMdHeart } from "react-icons/io"
 import { FaUser } from "react-icons/fa"
+import { BsFileEarmarkMusicFill } from "react-icons/bs"
+
 
 export default function Navbar () {
   return (
@@ -40,22 +42,22 @@ export default function Navbar () {
             </li>
 
             <li className={styles.buttonNavBar}>
-              <Link href="/favoritos">
-                <IoMdHeart 
-                  size={25} 
-                  color="#473080"
-                />
-              </Link>
-            </li> 
-
-            <li className={styles.buttonNavBar}>
-              <Link href="/cadastrar-podcast">
+              <Link href="/cadastro-podcast">
                 <AiOutlinePlus 
                   size={22} 
                   color="#473080"
                 />
               </Link>
             </li>
+
+            <li className={styles.buttonNavBar}>
+              <Link href="/cadastro-episodio">
+                <BsFileEarmarkMusicFill 
+                  size={20} 
+                  color="#473080"
+                />
+              </Link>
+            </li> 
           </ul>
         </nav>
         <button type="button" className={styles.logoutButon}>

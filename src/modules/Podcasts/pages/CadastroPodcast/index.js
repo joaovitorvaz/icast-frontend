@@ -31,7 +31,6 @@ export default function CadastroPodcast() {
       setLoading(false);
       toast.error("Ops! Algo deu errado, tente novamente.");
     })
-      
   }
 
   useEffect(() => {

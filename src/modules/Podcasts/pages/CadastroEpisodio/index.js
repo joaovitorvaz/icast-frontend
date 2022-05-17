@@ -1,24 +1,31 @@
 import Head from 'next/head'
 import styles from './styles.module.css'
-import iconUser from "../../../../assets/icon.jpeg"
-import iconLocalizacao from "../../../../assets/iconLocalizacao.png"
 import Navbar from '../../../../components/Navbar'
-import Image from 'next/image'
 import { toast } from 'react-toastify';
-import React, { FormEvent, ChangeEvent, useState } from "react"
+import React, { FormEvent, ChangeEvent, useState, useContext } from "react"
 import {useRef, useEffect} from "react"
-import { request } from 'http'
 import { api } from '../../../../service/api'
+import { AuthContext } from '../../../../contexts/Authentication'
+import UserProfile from "../../components/UserPerfil"
+import { BsFillCheckCircleFill } from 'react-icons/bs'
+
+
 
 export default function CadastroEp() {
 
   const [image, setImage] = useState();
+  const [audio, setAudio] = useState();
   const [preview, setPreview] = useState();
-  const fileInputRef = useRef()
+  const fileInputRef = useRef();
+  const audioInputRef = useRef();
+  const { isAuthenticated } = useContext(AuthContext);
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(false);
+  const [enviado, setEnviado] = useState();
+  const [podcasts, setPodcasts] = useState([]);
+  const [podcast, setPodcast] = useState();
 
   function handleSignup(event) {
     event.preventDefault();
@@ -27,22 +34,27 @@ export default function CadastroEp() {
     data.append('title', title);
     data.append('description', description);
     data.append('cover', image);
-    api.post(`episode/create/${"d1f5a038-166e-4e01-9334-cae2d21ffda9"}`, data).then((response) => {
+    data.append('episode', audio);
+    api.post("episode/create/"+podcast, data).then((response) => {
         response.data && setLoading(false);
         toast("Cadastro realizado com sucesso!");
-      
     }).catch((error) => {
       setLoading(false);
       toast.error("Ops! Algo deu errado, tente novamente.");
     })
-      
   }
 
-  function readURL(input){
-    sourceAux = URL.createObjectURL(input.target.fles[0]);
-    console.log(sourceAux);
-    let audio = new Audio(sourceAux);
-}
+  useEffect(() => {
+    if(audio){
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setEnviado(reader.result);
+      };
+      reader.readAsDataURL(audio);
+    }else{
+      setEnviado(null);
+    }
+  }, [audio]);
 
   useEffect(() => {
     if(image){
@@ -56,11 +68,21 @@ export default function CadastroEp() {
     }
   }, [image]);
 
+  useEffect(() => { 
+    if(isAuthenticated) {
+      api.get(`/podcast/me`).then(response => {
+        setPodcasts(response.data)
+      })
+    }
+  }, [isAuthenticated])
 
-  useEffect(() => {
-    api.get("podcast/me").then((response)=> {console.log(response.data)}).catch(() => {});
-  }, []);
+  function handleChangeEpisode(e) {
+    setPodcast(e.target.value);
+  }
 
+  function readURL(e) {
+    setAudio(e.target.files[0]);
+  }
 
   return (
     <div className={styles.container}>
@@ -72,27 +94,7 @@ export default function CadastroEp() {
       <div className={styles.grid}>
         <Navbar/>
         <main className={styles.main}>
-          <div className={styles.informacoes}>
-            <Image 
-              src={iconUser}
-              width={70}
-              height={70}
-              style={{borderRadius:'50px'}}
-            />
-            <div className={styles.organizarInformacoes}>
-              <p>João Vítor Vaz</p>
-              <div className={styles.organizarEndereco}>
-                <Image 
-                    src={iconLocalizacao}
-                    width={30}
-                    height={15}
-                    className={styles.imgEndereco}
-                />
-                  <p>Bahia, Brasil</p>
-                </div>
-            </div>
-            <button className={styles.buttonStatus}>Usuário</button>
-          </div>
+        <UserProfile />
           <div className={styles.criarEp}>
               <p className={styles.titleCriarEp}>Publicar Episódio</p>
               <p className={styles.subtitleCriarEp}>Publique novos episódios para seus podcasts</p>
@@ -100,7 +102,12 @@ export default function CadastroEp() {
               <div style={{display:'flex', flexDirection:'row', width:'100%'}}>
                 <div style={{display:'flex', flexDirection:'column', width:'35%'}}>
                   <label className={styles.label}>Podcast</label>
-                  <input className={styles.input} ></input>
+                  <select className={styles.select} name="Podcast" onChange={handleChangeEpisode}>
+                    <option className={styles.option} value="0" selected disabled>Selecione</option>
+                    {podcasts?.map((podcast) => (
+                      <option className={styles.option} value={podcast.id}>{podcast.title}</option>
+                    ))}
+                  </select>
                 </div>
                 <div style={{display:'flex', flexDirection:'column', marginLeft:'20px', width:'65%'}}>
                   <label className={styles.label} >Nome do episódio</label>
@@ -109,46 +116,79 @@ export default function CadastroEp() {
               </div>
               <label className={styles.label} >Descrição do episódio</label>
               <textarea className={styles.textarea} onChange={(e) => {setDescription(e.target.value)}}></textarea>
-              <label className={styles.label}>Capa do podcast</label>
-              {preview ? (
-                <img style={{height:'120px', objectFit: 'cover',
-                  cursor: 'pointer', borderRadius:'4px'}}
-                  src={preview} 
-                  onClick={() => {
-                    setImage(null);
-                  }}></img>
-              ) : (
-                <button 
-                  style={{height:'120px', objectFit: 'cover', 
-                  background:'white', border: '1px solid #98AFCA', 
-                  borderRadius: '4px', cursor: 'pointer'}}
-                  onClick={(event) => {
-                  event.preventDefault();
-                  fileInputRef.current.click();
-                }}>
-                  <p style={{color: '#6F7782', fontWeight: '200', fontSize:'40px'}}>+</p></button>
-              )}
-              <input 
-                type="file" 
-                ref={fileInputRef} 
-                style={{display: "none"}}
-                accept="image/*"
-                onChange={(event) => {
-                  const file = event.target.files[0];
-                  if(file && file.type.substr(0, 5) === "image"){
-                    setImage(file);
-                  }else{
-                    setImage(null);
-                  }
-                }}
-                >
-                </input>
-                <br></br>
-                <input id="auInput" type="file" accept="audio/*" onChange={e => readURL(e)}/>
-
+              <div style={{display:'flex', flexDirection:'row', width:'100%'}}>
+                <div style={{display:'flex', flexDirection:'column', width:'70%'}}>
+                  <label className={styles.label}>Capa do podcast</label>
+                  {preview ? (
+                    <img style={{height:'120px', objectFit: 'cover',
+                      cursor: 'pointer', borderRadius:'4px'}}
+                      src={preview} 
+                      onClick={() => {
+                        setImage(null);
+                      }}></img>
+                  ) : (
+                    <button 
+                      style={{height:'120px',  
+                      background:'white', border: '1px solid #98AFCA', 
+                      borderRadius: '4px', cursor: 'pointer'}}
+                      onClick={(event) => {
+                      event.preventDefault();
+                      fileInputRef.current.click();
+                    }}>
+                      <p style={{color: '#6F7782', fontWeight: '200', fontSize:'40px'}}>+</p></button>
+                  )}
+                  <input 
+                    type="file" 
+                    ref={fileInputRef} 
+                    style={{display: "none"}}
+                    accept="image/*"
+                    onChange={(event) => {
+                      const file = event.target.files[0];
+                      if(file && file.type.substr(0, 5) === "image"){
+                        setImage(file);
+                      }else{
+                        setImage(null);
+                      }
+                    }}
+                    />
+                  </div>
+                  <div className={styles.buttonGrid}>
+                    <label className={styles.label}>Episódio</label>
+                      {enviado ? (
+                        <button 
+                        style={{height:'120px',
+                        background:'white', border: '1px solid #98AFCA', 
+                        borderRadius: '4px', cursor: 'pointer'}}
+                        onClick={() => {
+                          event.preventDefault();
+                          audioInputRef.current.click();
+                        }}>
+                          <p style={{color: '#6F7782', fontWeight: '200', fontSize:'30px'}}><BsFillCheckCircleFill/></p></button>
+                          ) : (
+                        <button 
+                          style={{height:'120px',
+                          background:'white', border: '1px solid #98AFCA', 
+                          borderRadius: '4px', cursor: 'pointer'}}
+                          onClick={(event) => {
+                          event.preventDefault();
+                          audioInputRef.current.click();
+                          }}>
+                          <p style={{color: '#6F7782', fontWeight: '200', fontSize:'40px'}}>+</p>
+                        </button>
+                      )}
+                      <input 
+                        ref={audioInputRef}
+                        style={{display: "none"}}
+                        type="file" 
+                        accept=".mp3" 
+                        onChange={e => readURL(e)
+                      }/>
+                  </div>
+                </div>
                 <button className={styles.buttonEnviar} onClick={handleSignup} disabled={loading}>
                     {!loading ? "Enviar" : "Carregando..."}
                   </button>
+
               </div>
             </div>
         </main>
