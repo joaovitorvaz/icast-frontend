@@ -1,13 +1,11 @@
 import Head from 'next/head'
 import styles from './styles.module.css'
-import iconUser from "../../../../assets/icon.jpeg"
-import iconLocalizacao from "../../../../assets/iconLocalizacao.png"
 import { api } from "../../../../service/api";
 import { toast } from 'react-toastify';
 import Navbar from '../../../../components/Navbar'
-import Image from 'next/image'
-import React, { FormEvent, ChangeEvent, useState } from "react"
+import React, { useState } from "react"
 import {useRef, useEffect} from "react"
+import UserProfile from "../../components/UserPerfil"
 
 export default function CadastroPodcast() {
   const [image, setImage] = useState();
@@ -16,8 +14,6 @@ export default function CadastroPodcast() {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-
-
   const [loading, setLoading] = useState(false);
 
   function handleSignup(event) {
@@ -60,27 +56,7 @@ export default function CadastroPodcast() {
       <div className={styles.grid}>
         <Navbar/>
         <main className={styles.main}>
-          <div className={styles.informacoes}>
-            <Image 
-              src={iconUser}
-              width={70}
-              height={70}
-              style={{borderRadius:'50px'}}
-            />
-            <div className={styles.organizarInformacoes}>
-              <p>João Vítor Vaz</p>
-              <div className={styles.organizarEndereco}>
-                <Image 
-                    src={iconLocalizacao}
-                    width={30}
-                    height={15}
-                    className={styles.imgEndereco}
-                />
-                  <p>Bahia, Brasil</p>
-                </div>
-            </div>
-            <button className={styles.buttonStatus}>Usuário</button>
-          </div>
+          <UserProfile />
           <div className={styles.criarPodcast}>
               <p className={styles.titleCriarPodcast}>Criar Podcast</p>
               <p className={styles.subtitleCriarPodcast}>Crie um novo podcast</p>
@@ -94,12 +70,13 @@ export default function CadastroPodcast() {
                   <img style={{height:'120px', objectFit: 'cover',
                    cursor: 'pointer', borderRadius:'4px'}}
                     src={preview} 
+                    alt={preview}
                     onClick={() => {
                       setImage(null);
                     }}></img>
                 ) : (
                   <button 
-                    style={{height:'120px', objectFit: 'cover', 
+                    style={{height:'100%', objectFit: 'cover', 
                     background:'white', border: '1px solid #98AFCA', 
                     borderRadius: '4px', cursor: 'pointer'}}
                     onClick={(event) => {
