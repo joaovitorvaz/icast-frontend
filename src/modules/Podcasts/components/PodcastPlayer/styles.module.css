@@ -2,18 +2,19 @@
     padding: 20px;
     margin-top: 50px;
     height: calc(100% - 50px);
-    width: 100%;
+    width: 22rem;
+
     border-radius: 10px;
+    background-color: #ffffff;
+
     display: flex;
     flex-direction: column;
-    background-color: #ffffff;
 }
 
 .wrapper {
     height: calc(100vh - 120px);
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
 .playerHeader {
@@ -33,6 +34,128 @@
     font-size: 22px;
 }
 
+.emptyPlayer {
+    margin-top: 6vh;
+
+    width: 100%;
+    height: 15rem;
+    border: 1.5px dashed #322F30;
+    border-radius: 1.5rem;
+    background-color: #F7F7F8;
+
+    padding: 4rem;
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrapper footer {
+    align-self: stretch;
+}
+
+.wrapper footer .empty{
+    opacity: .5;
+}
+
+.emptyPlayer strong {
+    font-weight: 500;
+}
+
+.progress {
+    display: grid;
+    align-items: center;
+    gap: .5rem;
+    font-size: .875rem;
+}
+
+.progress span {
+    display: flex;
+    width: 4rem;
+    text-align: center;
+
+}
+
+.slider {
+    flex: 1;
+}
+
+.emptySlider {
+    margin-top: 10vh;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background-color: #322F30;
+}
+
+.timer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.controlEpisode {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1vh;
+    gap: 1.5rem;
+}
+
+.controlEpisode button {
+    cursor: pointer;
+    border: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pass {
+    font-size: 30px;
+    background: transparent;
+}
+
+ .playButton {
+    border: 0;
+    color: aliceblue;
+    background-color: #322F30;
+    box-shadow: -.5px .5px 4px #322F30;
+    font-size: 40px;
+
+    width: 45px;
+    height: 45px;
+    border-radius: 5px;
+}
+
+.line {
+    margin-top: 2vh;
+    width: 100%;
+    height: .1px;
+    border-radius: 1px;
+    background-color: #C4C4C4;
+}
+
+.episodes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.episodes h3 {
+    font-size: 16px;
+}
+
+.emptyEpisodes {
+    text-align: center;
+}
+
+.emptyEpisodes strong {
+    font-weight: 500;
+}
+
+
+/*
 .textContainer {
     margin-top: -30px;
 }
@@ -85,10 +208,12 @@
     color: aliceblue;
     background-color: #322F30;
     box-shadow: -.5px .5px 4px #322F30;
+    font-size: 38px;
+
     width: 45px;
     height: 45px;
     border-radius: 5px;
-    font-size: 38px;
+    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -121,12 +246,12 @@
 .episodeList::-webkit-scrollbar {
     width: 7px;
     /* width of the entire scrollbar */
-    background-color: #473080;
-}
-
+   /*background-color: #473080;
+}*/
+/*
 .episodeList::-webkit-scrollbar-thumb {
     background-color: #322f30;
     /* color of the scroll thumb */
-    border-radius: 3px;
+    /*border-radius: 3px; descomentar*/
     /* roundness of the scroll thumb */
-}
+/*}*/

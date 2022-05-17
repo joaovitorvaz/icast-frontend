@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { BsFillPlayFill } from "react-icons/bs"
 
 
-export default function CardPodcastCarousel({ url, title, author, description }) {
+export default function CardPodcastCarousel({ url, title, author, description, countEpisodes }) {
   return (
     <div className={styles.container}>
        <div className={styles.podcast__cover} >
@@ -18,7 +18,7 @@ export default function CardPodcastCarousel({ url, title, author, description })
        </div>
         <div className={styles.podcast__content}>
             <div>
-                <p>10 episódios</p>
+                <p>{countEpisodes} episódios</p>
             </div>
             <div>
                 <h3 className={styles.podcast__title}>{title}</h3>

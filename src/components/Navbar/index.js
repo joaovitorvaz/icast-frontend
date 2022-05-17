@@ -22,7 +22,7 @@ export default function Navbar () {
         <nav className={styles.nav}>
           <ul className={styles.iconsNavBar}>
             <li className={styles.buttonNavBar}>
-              <Link href="/podcasts">
+              <Link href="/">
                 <AiFillHome 
                   size={25} 
                   color="#473080"
@@ -31,7 +31,7 @@ export default function Navbar () {
             </li>
 
             <li className={styles.buttonNavBar}>
-              <Link href="/">
+              <Link href="/perfil">
                 <FaUser 
                   size={25} 
                   color="#473080"
@@ -40,7 +40,7 @@ export default function Navbar () {
             </li>
 
             <li className={styles.buttonNavBar}>
-              <Link href="/">
+              <Link href="/favoritos">
                 <IoMdHeart 
                   size={25} 
                   color="#473080"
@@ -58,14 +58,12 @@ export default function Navbar () {
             </li>
           </ul>
         </nav>
-        <div className={styles.logoutButon}>
-          <Link href="/">
-            <AiOutlinePoweroff
-              size={20} 
-              color="#000"
-            />
-          </Link>
-        </div>
+        <button type="button" className={styles.logoutButon}>
+          <AiOutlinePoweroff
+            size={20} 
+            color="#000"
+          />
+        </button>
       </div>
     </div>
   )

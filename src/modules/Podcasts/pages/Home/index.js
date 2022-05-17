@@ -1,34 +1,68 @@
 import Head from 'next/head'
 import styles from './styles.module.css'
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css"; 
-import "slick-carousel/slick/slick-theme.css";
-import { GrPrevious, GrNext } from 'react-icons/gr'
-import CardPodcastCarousel from '../../components/CardPodcastCarousel';
-import { podcasts } from "../../constants/data/podcasts"
-import Navbar from '../../../../components/Navbar';
+
+import Slider from "react-slick"
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
+
+import { FiSearch } from 'react-icons/fi'
+import { TiMediaPlayReverse, TiMediaPlay } from 'react-icons/ti'
+
+import Navbar from '../../../../components/Navbar'
+import Player from '../../components/PodcastPlayer'
+import PodcastList from '../../components/PodcastList'
+import CardPodcastCarousel from '../../components/CardPodcastCarousel'
+
+import { api } from '../../../../service/api'
+import { useState, useContext, useEffect } from 'react'
+
+import { AuthContext } from '../../../../contexts/Authentication'
+
+
+const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
+  <TiMediaPlayReverse {...props} style={{backgroundColor:'#fafafa', width: '35px',
+  height:'35px', borderRadius: '100%', display: 'flex',  fontSize:'30px',
+  alignItems:'center', justifyContent: 'center', cursor: 'pointer', color:'black', zIndex:'99'
+}}/>
+);
+
+const SlickArrowRight = ({ currentSlide, slideCount, ...props }) => (
+  <TiMediaPlay {...props} style={{backgroundColor:'#fafafa', width: '35px',
+  height:'35px', borderRadius: '100%', display: 'flex',  fontSize:'30px',
+  alignItems:'center', justifyContent: 'center', cursor: 'pointer', color:'black', zIndex:'99'
+}}/>
+);
+
+const settings = {
+  dots: false,
+  infinite: false,
+  speed: 500,
+  slidesToShow: 2.2,
+  slidesToScroll: 1,
+  prevArrow: <SlickArrowLeft />,
+  nextArrow: <SlickArrowRight />
+};
 
 export default function Home() {
+  const { isAuthenticated } = useContext(AuthContext);
+  const [ podcasts, setPodcasts ] = useState([]) 
+  const [ spotlights, setSpotlights ] = useState([]) 
 
-  const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
-    <GrPrevious {...props}/>
+  useEffect(() => { 
+    if(isAuthenticated) {
+      api.get('podcast').then(response => {
+        setPodcasts(response.data)
+      })
+    }
+  }, [isAuthenticated])
 
-  );
-
-  const SlickArrowRight = ({ currentSlide, slideCount, ...props }) => (
-    <GrNext {...props}/>
-  );
-
-  const settings = {
-    dots: false,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    prevArrow: <SlickArrowLeft />,
-    nextArrow: <SlickArrowRight />,
-    
-  };
+  useEffect(() => { 
+    if(isAuthenticated) {
+      api.get('podcasts/spotlights').then(response => {
+        setSpotlights(response.data)
+      })
+    }
+  }, [isAuthenticated])
 
   return (
     <div className={styles.container}>
@@ -38,24 +72,48 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.grid}>
-        <Navbar/>
-        <main className={styles.main}>
-          <h2 className={styles.title}> Destaque</h2>
-          <div className={styles.carousel}>
-            
-              <Slider {...settings}>
-                  {podcasts.map((podcast) => (
-                      <CardPodcastCarousel 
-                          key={podcast.id} 
-                          title={podcast.title}
-                          url={podcast.url} 
-                          description={podcast.description}
-                      />
-                  ))}
-              </Slider>
+        <div><Navbar/></div>
+        <div className={styles.main}>
+          <div className={styles.search}>
+            <input type="text" id="search"/>
+            <div className={styles.icon}><FiSearch/></div>
           </div>
-        </main>
+          <div className={styles.highlights}>
+            <h2 className={styles.pageTitle}>DESTAQUES</h2>
+            <div className={styles.carousel}>
+              <Slider {...settings}>
+                {spotlights?.map((spotlight) => (
+                  <CardPodcastCarousel 
+                    key={spotlight.id} 
+                    title={spotlight.title}
+                    author={`${spotlight.author.firstName} ${spotlight.author.lastName}`}
+                    url={spotlight.coverUrl} 
+                    description={spotlight.description}
+                    countEpisodes={spotlight.Episode.length}
+                  />
+                ))}
+              </Slider>
+            </div>
+          </div>
+          <h2 className={styles.pageTitle}>FEED</h2>
+          <div className={styles.feed}>
+            {podcasts?.map((podcast) => (
+              <PodcastList 
+                key={podcast.id} 
+                title={podcast.title}
+                author={`${podcast.author.firstName} ${podcast.author.lastName}`}
+                url={podcast.coverUrl} 
+                description={podcast.description}
+                countEpisodes={podcast.Episode.length}
+              />
+            ))}
+          </div>
+        </div>
+        <div className={styles.player}>
+          <Player/>
+        </div>
       </div>
     </div>
   )
 }
+
