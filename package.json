@@ -16,7 +16,8 @@
     "react-dom": "18.1.0",
     "react-icons": "^4.3.1",
     "react-slick": "^0.29.0",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "toast": "^0.3.47"
   },
   "devDependencies": {
     "eslint": "8.14.0",

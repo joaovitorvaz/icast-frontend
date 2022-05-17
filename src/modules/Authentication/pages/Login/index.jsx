@@ -2,6 +2,7 @@ import { useState, useContext } from 'react'
 import { AuthContext } from "../../../../contexts/Authentication"
 import styles from './styles.module.css'
 import { useRouter } from 'next/router'
+import { toast } from 'react-toastify';
 
 export default function Login() {
   const router = useRouter()
@@ -17,6 +18,7 @@ export default function Login() {
       await signIn({ email, password });
       router.push('/podcasts');
     } catch {
+      toast.error("Senha e/ou email não estão corretos.");
       setLoadingLogin(false);
     }
   }
@@ -45,12 +47,10 @@ export default function Login() {
                 required>
               </input>
             </div>
-            <button className={styles.buttonEnviar} type='submit' disabled={loadingLogin}>
+            <button onClick={onSubmit} className={styles.buttonEnviar} type='submit' disabled={loadingLogin}>
               {loadingLogin ? "Carregando ..." : "Entrar"}
             </button>
           </div>
-
-           
         </div>
       </main>
     </div>

@@ -8,18 +8,19 @@
   
 .grid{
     display: flex;
-    padding: 0px;  
 }
 
 .loginUser{
     border-radius: 8px;
-    width: 30%;
-    height: 65vh;
+    width: 587px;
+    height: auto;
     background-color: #FFFFFF;
     display: flex;
     justify-items: center;
     align-self: center;
     flex-direction: column;
+    padding: 50px 0;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px
 }
 
 .titleLoginUser{
@@ -28,10 +29,11 @@
     text-align: center;
     font-size: 24px;
     font-family: 'Play', sans-serif;
+    margin-bottom: -10px;
 }
 
 .subtitleLoginUser{
-    padding: 0px 60px 25px 60px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: center;
     color: #48434A;
@@ -44,10 +46,11 @@
     width: 100%;
 }
 
-.organizarBlocoCad{
-
+.blocoFormulario input {
+    padding: 0 16px;
+    font-size: 16px;
+    color: #596069;
 }
-
 
 .input{
     width: 100%;
@@ -78,7 +81,7 @@
     background-color: #473080;
     border: 0 none;
     height: 5.5vh;
-    width: 264px;
+    width: 100%;
     color: white;
     border-radius: 4px;
     font-size: 14px;
