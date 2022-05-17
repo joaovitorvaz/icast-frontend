@@ -3,10 +3,16 @@ import Image from 'next/image'
 import { BsFillPlayFill } from "react-icons/bs"
 
 import { useContext } from 'react'
-import { PlayerContext } from '../../../../contexts/Player/PlayerContext'
+import { PlayerContext } from '../../../../contexts/Player'
 
-export default function PodcastList({ url, title, author, description, countEpisodes }) {
-  const player = useContext(PlayerContext)
+
+export default function PodcastList({ id, url, title, author, description, countEpisodes }) {
+  const { loadPodcast } = useContext(PlayerContext);
+
+  function handlePlay() {
+    loadPodcast(id)
+  }
+
   return (
     <div className={styles.podcastcontainer}>
       <div className={styles.podcastCover}>
@@ -27,7 +33,7 @@ export default function PodcastList({ url, title, author, description, countEpis
         <p className={styles.episodes}>{countEpisodes} EPISÓDIOS</p>
       </div>
 
-      <div className={styles.podcastPlay}><BsFillPlayFill/></div>
+      <button className={styles.podcastPlay} onClick={handlePlay}><BsFillPlayFill/></button>
     </div>
   )
 }

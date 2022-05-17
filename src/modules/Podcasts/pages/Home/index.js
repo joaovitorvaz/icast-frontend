@@ -85,6 +85,7 @@ export default function Home() {
                 {spotlights?.map((spotlight) => (
                   <CardPodcastCarousel 
                     key={spotlight.id} 
+                    id={spotlight.id} 
                     title={spotlight.title}
                     author={`${spotlight.author.firstName} ${spotlight.author.lastName}`}
                     url={spotlight.coverUrl} 
@@ -100,6 +101,7 @@ export default function Home() {
             {podcasts?.map((podcast) => (
               <PodcastList 
                 key={podcast.id} 
+                id={podcast.id}
                 title={podcast.title}
                 author={`${podcast.author.firstName} ${podcast.author.lastName}`}
                 url={podcast.coverUrl} 

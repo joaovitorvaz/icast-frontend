@@ -1,10 +1,17 @@
 import styles from './styles.module.css'
 import Image from 'next/image'
 import { BsFillPlayFill } from "react-icons/bs"
+import { useContext } from 'react'
+import { PlayerContext } from '../../../../contexts/Player'
 
+export default function CardPodcastCarousel({ id, url, title, author, description, countEpisodes }) {
+  
+    const { loadPodcast } = useContext(PlayerContext);
 
-export default function CardPodcastCarousel({ url, title, author, description, countEpisodes }) {
-  return (
+  function handlePlay() {
+    loadPodcast(id)
+  }
+    return (
     <div className={styles.container}>
        <div className={styles.podcast__cover} >
             <Image 
@@ -20,12 +27,17 @@ export default function CardPodcastCarousel({ url, title, author, description, c
             <div>
                 <p>{countEpisodes} episódios</p>
             </div>
-            <div>
+            <div className={styles.body}>
                 <h3 className={styles.podcast__title}>{title}</h3>
                 <p className={styles.podcast__author}>por {author}</p>
                 <div className={styles.playerGrid}>
                     <p className={styles.podcast__description}>{description}</p>
-                    <div className={styles.playerIcon}><BsFillPlayFill/></div>
+                    <button 
+                        className={styles.playerIcon}
+                        onClick={handlePlay}
+                    >
+                        <BsFillPlayFill/>
+                    </button>
                 </div>
             </div>
         </div>

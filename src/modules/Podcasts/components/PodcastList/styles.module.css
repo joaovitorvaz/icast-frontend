@@ -1,5 +1,6 @@
 .podcastcontainer {
-  display: flex;
+  display: grid;
+  grid-template-columns: 120px calc(100% - 120px - 90px) 90px;
   flex-direction: row;
   align-items: center;
 
@@ -52,11 +53,12 @@
 }
 
 .podcastPlay {
+  border: none;
   color: aliceblue;
   background-color: #322F30;
   box-shadow: -.5px .5px 4px #322F30;
 
-  width: 85px;
+  width: 100%;
   height: 45px;
   border-radius: 5px;
   
