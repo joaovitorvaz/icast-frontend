@@ -30,7 +30,6 @@ export const getServerSideProps= async (ctx) => {
   }).catch(() => false)
 
   if (!allowed) {
-    console.log("here")
     return {
       redirect: {
         destination: '/podcasts',
