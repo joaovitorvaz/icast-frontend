@@ -51,6 +51,16 @@ export default function Login() {
               {loadingLogin ? "Carregando ..." : "Entrar"}
             </button>
           </div>
+          <div style={{cursor: 'pointer', display:'flex', flexDirection: 'row', widt: '100%', justifyContent: 'center'}}>
+            <p className={styles.login}>Ainda não possui uma conta? </p>
+            <p 
+              className={styles.login} 
+              style={{color: '#0094FF'}}
+              onClick={() => { router.push("cadastro")}}
+            > 
+              &nbsp;&nbsp;Faça seu cadastro
+            </p>
+          </div>
         </div>
       </main>
     </div>

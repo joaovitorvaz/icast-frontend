@@ -162,7 +162,7 @@ export default function CadastroUsuario() {
                   >
                     {!loading ? "Salvar cadastro" : "Carregando..."}
                   </button>
-                  <div style={{display:'flex', flexDirection: 'row', widt: '100%', justifyContent: 'center'}}>
+                  <div style={{cursor: 'pointer', display:'flex', flexDirection: 'row', widt: '100%', justifyContent: 'center'}}>
                     <p className={styles.login}>Já possui uma conta? </p>
                     <p 
                       className={styles.login} 
@@ -171,7 +171,7 @@ export default function CadastroUsuario() {
                     > 
                       &nbsp;&nbsp;Faça login
                     </p>
-                    </div>
+                  </div>
                 </div>
             </div>
           </div>

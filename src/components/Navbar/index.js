@@ -36,7 +36,7 @@ export default function Navbar () {
         <nav className={styles.nav}>
           <ul className={styles.iconsNavBar}>
             <li className={styles.buttonNavBar}>
-              <Link href="/">
+              <Link href="/podcasts">
                 <a>
                   <AiFillHome 
                     size={25} 
@@ -58,7 +58,7 @@ export default function Navbar () {
             </li>
             {role !== 'DEFAULT_USER' && (
               <li className={styles.buttonNavBar}>
-                <Link href="/cadastro-podcast">
+                <Link href="/cadastrar/podcast">
                   <a>
                     <AiOutlinePlus 
                       size={22} 
@@ -70,7 +70,7 @@ export default function Navbar () {
             )}
             {role !== 'DEFAULT_USER' && (
                 <li className={styles.buttonNavBar}>
-                  <Link href="/cadastro-episodio">
+                  <Link href="/cadastrar/episodio">
                     <a>
                       <BsFileEarmarkMusicFill 
                         size={20} 

@@ -1,10 +1,10 @@
-import CadastroEp from '../modules/Podcasts/pages/CadastroEpisodio'
+import CadastroPodcast from '../../modules/Podcasts/pages/CadastroPodcast'
 import { parseCookies } from 'nookies'
-import { getAPIClient } from '../service/axios'
+import { getAPIClient } from '../../service/axios'
 
-export default function cadastrarEp() {
+export default function cadastrarPodcast() {
   return (
-   <CadastroEp/>
+   <CadastroPodcast/>
   )
 }
 
