@@ -6,6 +6,7 @@ export const AuthContext = createContext({});
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [role, setRole] = useState(null);
 
   const isAuthenticated = !!user;
 
@@ -18,6 +19,12 @@ export function AuthProvider({ children }) {
       });
     }
   }, []);
+
+  useEffect(() => {
+    if(user) {
+      setRole(user.role);
+    }
+  }, [user])
 
   async function signIn({ email, password }) {
     const response = await api.post('/auth', { email, password });
@@ -46,6 +53,7 @@ export function AuthProvider({ children }) {
         isAuthenticated,
         signIn,
         logOut,
+        role
       }}
     >
       {children}
