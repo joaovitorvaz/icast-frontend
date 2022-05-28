@@ -1,21 +1,20 @@
+import PaginaPrincipal from '../modules/Home/pages/PaginaPrincipal'
 import { parseCookies } from 'nookies'
-
-import HomePodcast from '../modules/Podcasts/pages/Home'
 
 export default function Home() {
 
   return (
-    <HomePodcast />
+    <PaginaPrincipal />
   )
 }
 
 export const getServerSideProps= async (ctx) => {
   const { ['icast.token']: token } = parseCookies(ctx);
 
-  if (!token) {
+  if (token) {
     return {
       redirect: {
-        destination: '/login',
+        destination: '/podcasts',
         permanent: false,
       },
     };
