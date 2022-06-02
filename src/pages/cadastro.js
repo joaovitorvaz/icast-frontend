@@ -1,4 +1,5 @@
 import CadastroUsuario from '../modules/Authentication/pages/CadastroUsuario'
+import { parseCookies } from 'nookies'
 
 export default function cadastrarUsuario() {
   return (
