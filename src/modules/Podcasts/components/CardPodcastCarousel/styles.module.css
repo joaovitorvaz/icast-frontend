@@ -1,20 +1,19 @@
 .container {
-    width: calc(100% - 10px);
-    height: 130px;
+    width: calc(100% - 30px);
+    height: 150px;
     border: 20px;
     position: relative;
 
     display: flex;
-    align-items: flex-end;
+    align-items: center;
 }
 
 .podcast__cover {
-    
     position: absolute;
     top: 0px;
-    left: 16px;
-    width: 108px;
-    height: 84px;
+    left: 10px;
+    width: 100px;
+    height: 100px;
 } 
 
 .podcast__cover img {
@@ -23,33 +22,102 @@
 }
 
 .podcast__content {
+    height: 120px;
+    width: 100%;
+    padding-left: 10px;
+
+    background: #ffffff;
     border-radius: 10px;
-    background: var(--white-color);
-    padding: 16px 20px 16px 130px;
-    padding: 16px 20px;
+    
     display: grid;
     grid-template-columns: 118px 1fr;
+    align-items: center;
 }
 
 .podcast__content div:first-child {
     height: 100%;
     width: 100%;
-
+    
     display: flex;
     align-items: flex-end;
     text-transform: uppercase;
-    font-size: 12px;
-    color: var(--purple-color-primary);
-    font-weight: 500;
-}
+    font-size: 10px;
+    color: #473080;
+    font-weight: 600;
 
-.podcast__title {
-    color: var(--font-color-primary);
-    font-size: 16px;
 }
 
 .podcast__description {
-    color: var(--font-color-secondary);
-    font-size: 14px;
+    width: 270px;
+}
+
+.podcast__title {
+    color: #322F30;
+    font-size: 16px;
+    margin-top: -2px;
+    line-height: 16px;
+    max-height: 48px; 
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+.podcast__author {
+    color: #322F30;
+    font-size: 10px;
+    margin-top: -15px;
+
+}
+
+.podcast__description {
+    margin-top: -5px;
     text-align: justify;
+
+    color: #322F30;
+    font-size: 12px;
+    line-height: 16px;
+    max-height: 48px; 
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.playerGrid {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: calc(100% - 50px) 50px;
+    align-items: flex-start;
+}
+
+.playerIcon {
+    background: transparent;
+    border: none;
+    color: aliceblue;
+    background-color: #322F30;
+  
+    width: 32px;
+    height: 32px;
+    border-radius: 5px;
+    
+    font-size: 24px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    cursor: pointer;
+    margin-bottom: -8px;
+}
+
+.body {
+    width: 100%;
+    height: 100%;
+    padding: 20px 0;
 }

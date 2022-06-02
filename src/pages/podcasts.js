@@ -1,9 +1,11 @@
 import { parseCookies } from 'nookies'
 
+import HomePodcast from '../modules/Podcasts/pages/Home'
+
 export default function Podcasts() {
 
   return (
-    <p>Exemplo de rota protegida!! </p>
+    <HomePodcast />
   )
 }
 

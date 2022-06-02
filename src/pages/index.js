@@ -1,8 +1,26 @@
-import HomePodcast from '../modules/Podcasts/pages/Home'
+import PaginaPrincipal from '../modules/Home/pages/PaginaPrincipal'
+import { parseCookies } from 'nookies'
 
 export default function Home() {
 
   return (
-    <HomePodcast />
+    <PaginaPrincipal />
   )
 }
+
+export const getServerSideProps= async (ctx) => {
+  const { ['icast.token']: token } = parseCookies(ctx);
+
+  if (token) {
+    return {
+      redirect: {
+        destination: '/podcasts',
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {},
+  };
+};
