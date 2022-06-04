@@ -47,7 +47,6 @@
     right: 0;
     margin-right: 15px;
     margin-top: 8px;
-    cursor: pointer;
     font-size: 18px;
 }
 
@@ -73,4 +72,21 @@
     /* color of the scroll thumb */
     border-radius: 3px;
     /* roundness of the scroll thumb */
+}
+
+.keywordNotFound {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.keywordNotFound {
+    line-height: 5px;
+    height: calc(100vh - 140px);
+}
+
+.result {
+    height: calc(100vh - 140px);
 }
