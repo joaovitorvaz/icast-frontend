@@ -5,7 +5,7 @@ const nextConfig = {
     API_URL: process.env.API_URL
   },
   images: {
-    domains: ['localhost:3000', 'localhost'],
+    domains: ['localhost:3000', 'localhost', 'icast-api.herokuapp.com'],
   }, 
   webpack: (config) => {
     config.resolve.fallback = { fs: false, path: false, stream: false, constants: false };

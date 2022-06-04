@@ -78,8 +78,9 @@
 
     color: #322F30;
     font-size: 12px;
-    line-height: 16px;
-    max-height: 48px; 
+    line-height: 13px;
+    max-height: 38px; 
+    width: 240px;
 
     overflow: hidden;
     text-overflow: ellipsis;
