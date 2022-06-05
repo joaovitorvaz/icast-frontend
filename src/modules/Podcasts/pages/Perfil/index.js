@@ -48,7 +48,7 @@ export default function Home() {
             <a href="/cadastrar/podcast">
               <button style={{border:'1px solid #473080', color: '#473080', fontWeight:'200', cursor:'pointer',
                 fontFamily:'Montserrat, sans-serif', background:'none', width:'110px', height:'80px', display:'flex', 
-                flexDirection:'column', alignItems:'center' }}>
+                flexDirection:'column', alignItems:'center', borderRadius:'4px' }}>
                 <p style={{fontSize:'45px', marginTop:'-6px'}}>+</p>
                 <p style={{fontSize:'10px', marginTop:'-40px'}}>Criar podcast</p>
               </button>
@@ -56,7 +56,7 @@ export default function Home() {
             <a href="/cadastrar/episodio">
               <button style={{border:'1px solid #473080', color: '#473080', fontWeight:'200', marginLeft:'30px', cursor:'pointer',
               fontFamily:'Montserrat, sans-serif', background:'none', width:'110px', height:'80px', display:'flex', 
-              flexDirection:'column', alignItems:'center' }}>
+              flexDirection:'column', alignItems:'center', borderRadius:'4px' }}>
               <p style={{fontSize:'45px', marginTop:'-6px'}}>+</p>
               <p style={{fontSize:'10px', marginTop:'-40px'}}>Adicionar episodio</p>
               </button>  
