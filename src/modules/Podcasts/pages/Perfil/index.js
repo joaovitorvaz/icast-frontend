@@ -13,8 +13,7 @@ export default function Home() {
   const { isAuthenticated } = useContext(AuthContext);
   const [ podcasts, setPodcasts ] = useState([]) 
   const [ spotlights, setSpotlights ] = useState([]) 
-
-
+  const { role } = useContext(AuthContext);
   useEffect(() => { 
     if(isAuthenticated) {
       api.get('podcast').then(response => {
@@ -40,28 +39,29 @@ export default function Home() {
       </Head>
       <div className={styles.grid}>
         <Navbar/>
-        <div>
+      </div>
           <UserProfile/>
-          <div style={{marginLeft:'110px'}}>
-          <h2 className={styles.pageTitle} style={{fontSize:'19px', marginTop:'40px', marginBottom:'20px'}}>Publique</h2>
-          <div style={{display:'flex'}}>
-            <a href="/cadastrar/podcast">
-              <button style={{border:'1px solid #473080', color: '#473080', fontWeight:'200', cursor:'pointer',
-                fontFamily:'Montserrat, sans-serif', background:'none', width:'110px', height:'80px', display:'flex', 
-                flexDirection:'column', alignItems:'center', borderRadius:'4px' }}>
-                <p style={{fontSize:'45px', marginTop:'-6px'}}>+</p>
-                <p style={{fontSize:'10px', marginTop:'-40px'}}>Criar podcast</p>
-              </button>
-            </a>
-            <a href="/cadastrar/episodio">
-              <button style={{border:'1px solid #473080', color: '#473080', fontWeight:'200', marginLeft:'30px', cursor:'pointer',
-              fontFamily:'Montserrat, sans-serif', background:'none', width:'110px', height:'80px', display:'flex', 
-              flexDirection:'column', alignItems:'center', borderRadius:'4px' }}>
-              <p style={{fontSize:'45px', marginTop:'-6px'}}>+</p>
-              <p style={{fontSize:'10px', marginTop:'-40px'}}>Adicionar episodio</p>
-              </button>  
-            </a>
-          </div>
+          {role == 'DEFAULT_USER' ? (
+            <div style={{marginLeft:'110px'}}>
+              <h2 className={styles.pageTitle} style={{fontSize:'19px', marginTop:'40px', marginBottom:'20px'}}>Publique</h2>
+              <div style={{display:'flex'}}>
+                <a href="/cadastrar/podcast">
+                  <button style={{border:'1px solid #473080', color: '#473080', fontWeight:'200', cursor:'pointer',
+                    fontFamily:'Montserrat, sans-serif', background:'none', width:'110px', height:'80px', display:'flex', 
+                    flexDirection:'column', alignItems:'center', borderRadius:'4px' }}>
+                    <p style={{fontSize:'45px', marginTop:'-6px'}}>+</p>
+                    <p style={{fontSize:'10px', marginTop:'-40px'}}>Criar podcast</p>
+                  </button>
+                </a>
+                <a href="/cadastrar/episodio">
+                  <button style={{border:'1px solid #473080', color: '#473080', fontWeight:'200', marginLeft:'30px', cursor:'pointer',
+                  fontFamily:'Montserrat, sans-serif', background:'none', width:'110px', height:'80px', display:'flex', 
+                  flexDirection:'column', alignItems:'center', borderRadius:'4px' }}>
+                  <p style={{fontSize:'45px', marginTop:'-6px'}}>+</p>
+                  <p style={{fontSize:'10px', marginTop:'-40px'}}>Adicionar episodio</p>
+                  </button>  
+                </a>
+              </div>
               <h2 className={styles.pageTitle}>Seus Podcasts</h2>
               <div className={styles.feed}>
                 {podcasts?.map((podcast) => (
@@ -76,10 +76,19 @@ export default function Home() {
                   />
                 ))}
               </div>
-          </div>
-        </div>
-      </div>
-    </div>
+            </div>    
+          ) :
+          (
+            <div style={{marginLeft:'130px'}}>
+              <h2 className={styles.pageTitle} style={{fontSize:'19px', marginTop:'40px', marginBottom:'20px'}}>Minha conta</h2>
+              <p style={{width:'380px'}}>Faça o upgrade da sua conta de ouvinte para podcaster e publique seus podcaster  de forma gratuita.</p>
+              <button style={{width:'300px', height:'35px', background:'#473080', 
+              borderRadius:'5px', color:'white', fontSize: '10px', border: 'none',
+              cursor:'pointer'}}>SOLICITAR UPGRADE DE CONTA PODCASTER</button>
+            </div>
+          )
+        }
+      </div>             
   );
 }
 
