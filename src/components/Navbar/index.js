@@ -68,18 +68,7 @@ export default function Navbar () {
                 </Link>
               </li>
             )}
-            {role !== 'DEFAULT_USER' && (
-                <li className={styles.buttonNavBar}>
-                  <Link href="/cadastrar/episodio">
-                    <a>
-                      <BsFileEarmarkMusicFill 
-                        size={20} 
-                        color="#473080"
-                      />
-                    </a>
-                  </Link>
-              </li> 
-            )}
+            
           </ul>
         </nav>
         <button type="button" onClick={handleLogout} className={styles.logoutButon}>

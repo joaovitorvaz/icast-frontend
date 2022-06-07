@@ -53,7 +53,8 @@ export function AuthProvider({ children }) {
         isAuthenticated,
         signIn,
         logOut,
-        role
+        role,
+        setRole
       }}
     >
       {children}
