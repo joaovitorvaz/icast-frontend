@@ -7,7 +7,7 @@ import { useState, useContext, useEffect } from 'react'
 import { AuthContext } from "../../../../contexts/Authentication"
 
 export default function UserProfile() {
-    const { user } = useContext(AuthContext);
+    const { user, role } = useContext(AuthContext);
 
     const [ url, setUrl ] = useState("");
     const [ username, setUsername ] = useState("");
@@ -55,7 +55,12 @@ export default function UserProfile() {
                   </div>
               </div>
             </div>
-            <button className={styles.buttonStatus}>Podcaster</button>
+            {role === 'PODCASTER' ? (
+              <button className={styles.buttonStatus}>Podcaster</button>
+            ) : (
+              <button className={styles.buttonStatus}>Ouvinte</button>
+            )}
+            
           </div> 
     </div>
   )

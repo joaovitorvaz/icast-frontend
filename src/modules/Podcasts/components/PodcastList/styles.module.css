@@ -56,6 +56,7 @@
 }
 
 .podcastPlay {
+  cursor: pointer;
   border: none;
   color: aliceblue;
   background-color: #322F30;
@@ -72,4 +73,13 @@
   justify-content: center;
 
   cursor: pointer;
+}
+
+.podcastDelete {
+  cursor: pointer;
+  border: none;
+  font-size: 38px;
+  background: transparent;
+
+  color: #bb1414;
 }
